@@ -37,7 +37,7 @@ pos0 = data(1,2:4); %deg
 att0 = round(data(1,[7,6,5]),5) /180*pi; %rad, [roll, pitch, yaw]
 
 %% 4.Set time parameter
-dt_scope = 0.001;
+dt_scope = 0.1;
 dt_solve = 1e-3;
 dt_imu_rate = 10e-3;
 dt_imu_delta = 10e-3;
