@@ -19,10 +19,11 @@ q = dcm2quat(Cib);
 
 for k=1:n
     kj = 2*k;
-%     delta_theta = imu(kj-1,2:4)+imu(kj,2:4); %single
-    delta_theta = imu(kj-1,2:4)+imu(kj,2:4) + 2/3*cross(imu(kj-1,2:4),imu(kj,2:4)); %double
+    dtheta1 = imu(kj-1,2:4);
+    dtheta2 = imu(kj,  2:4);
 
-    Phi = delta_theta;
+%     Phi = dtheta1+dtheta2; %single sample
+    Phi = dtheta1+dtheta2 + 2/3*cross(dtheta1,dtheta2); %double sample
     if norm(Phi)>0
         phi = norm(Phi);
         qc = [cos(phi/2), Phi/phi*sin(phi/2)];
